@@ -2,9 +2,9 @@ import Juego from "./Juego";
 
 const path = require('path')
 const express = require('express');
-const app = module.exports.app = express();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+const app = express();
+const server = require('http').Server(app);
+var io = module.exports.io = require('socket.io')(server);
 var es6Renderer = require('express-es6-template-engine');
 app.engine('html', es6Renderer);
 app.set('views', 'views');
@@ -74,6 +74,6 @@ io.on('connection', function(socket){
   })
 });
 
-http.listen(port, function(){
-  console.log('listo en puerto 5000');
+server.listen(port, function(){
+  console.log('listo en puerto: ',port);
 });
