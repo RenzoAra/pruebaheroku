@@ -1,4 +1,4 @@
-import {Jugador} from './jugador'
+import {Jugador} from './Jugador'
 import { throws } from 'assert';
 
 
