@@ -29,6 +29,7 @@
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
     "test": "mocha -r ts-node/register test/**/*.ts",
+    "build": "tsc -p .",
     "coverage": "nyc --reporter=text npm run test"
   },
   "repository": {
