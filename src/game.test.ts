@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { Juego } from "../src/Juego";
-import { Jugador } from "../src/Jugador";
+import { Juego } from "./Juego";
+import { Jugador } from "./jugador";
 
 
 describe('Jugador', function() {
