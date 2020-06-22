@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Arkanoid Menu</title>
+</head>
+<body>
+
+    <style>
+        body{
+            background-color: lightgrey;
+        }
+        *{
+            padding : 0px;
+            margin : 0px;
+            font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+        }
+      </style>
+
+<div id="particles-js" style="position : absolute; width:100%; height:100%; z-index:-1; background-color: #000000"></div>
+  <div class="container">
+      <img src="../logo.jpg" width="600" class="img-fluid wall" style="display: block; margin: 0 auto">
+  </div>
+  <br><br><br>
+  <div class="container">
+    <center>
+      <label id ="nombre" display = 'block' style="display: none">${salida}</label>
+      <Form action = "/game" method = "POST">
+        <button id="Iniciar_juego" type="submit" class="btn btn-outline-light btn-lg" style="margin: 10px; width:240px; height:64px;">Iniciar juego</button>
+        <Input name="textbox" id="usuario" class="form-control" aria-label="Nombre de usuario:" aria-describedby="inputGroup-sizing-default" type="text" value="${salida}"style="display: none">
+      </Form>
+      <Form action = "/tabla" method = "POST">
+        <button id="Ranking" type="submit" class="btn btn-outline-light btn-lg" style="margin: 10px; width:240px; height:64px;">Ver Ranking</button>
+        <Input name="textbox" id="usuario" class="form-control" aria-label="Nombre de usuario:" aria-describedby="inputGroup-sizing-default" type="text" value="${salida}"style="display: none">
+      </Form>
+      <Form action = "/inst" method = "GET">
+        <button id="Instrucciones" type="submit" class="btn btn-outline-light btn-lg" style="margin: 10px; width:240px; height:64px;">Instrucciones</button>
+      </Form>
+      <Form action = "/salir" method = "POST">
+        <button id="Salir" type="submit" class="btn btn-outline-light btn-lg" style="margin: 10px; width:240px; height:64px;">Salir</button>
+        <Input name="textbox" id="usuario" class="form-control" aria-label="Nombre de usuario:" aria-describedby="inputGroup-sizing-default" type="text" value="${salida}"style="display: none">
+      </Form>
+    </center>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    socket.emit('ranking', {nombre: document.getElementById("nombre").innerHTML.toString()});
+    
+    particlesJS.load('particles-js','../particles.json',function(){
+      console.log('particles.json loaded...');
+    });
+  </script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
+</body>
+</html>
